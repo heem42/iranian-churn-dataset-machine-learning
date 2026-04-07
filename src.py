@@ -162,9 +162,12 @@ for model_name, model in tuned_models.items():
     f1_scores = []
     roc_auc_scores = []
     for i in range(10):
+        # random_state=42+i is used to get different random splits for each iteration, creating random subsamples
+        # stratify=churn_labels is used to maintain the same class distribution in both train and test sets for accurate results
         X_sub_train, X_sub_test, y_sub_train, y_sub_test = train_test_split(
             features, churn_labels, test_size=0.2, random_state=42+i, stratify=churn_labels
         )
+        # scale the features of subsamples
         scaler_sub = StandardScaler()
         X_sub_train_scaled = scaler_sub.fit_transform(X_sub_train)
         X_sub_test_scaled = scaler_sub.transform(X_sub_test)
@@ -178,12 +181,16 @@ for model_name, model in tuned_models.items():
         recall_scores.append(recall_score(y_sub_test, y_sub_pred))
         f1_scores.append(f1_score(y_sub_test, y_sub_pred))
         roc_auc_scores.append(roc_auc_score(y_sub_test, y_sub_pred_proba))
+
+    # calculate mean of scores so we have one value for each metric, easier for us to compare just like in CV mehtod
     subsample_results[model_name] = {
         'Precision': f'{pd.Series(precision_scores).mean():.4f}',
         'Recall': f'{pd.Series(recall_scores).mean():.4f}',
         'F1-Score': f'{pd.Series(f1_scores).mean():.4f}',
         'ROC-AUC': f'{pd.Series(roc_auc_scores).mean():.4f}'
     }
+
+# Transpose the subsample_table array for better visualization
 subsample_table = pd.DataFrame(subsample_results).T
 print(subsample_table.to_string())
 
