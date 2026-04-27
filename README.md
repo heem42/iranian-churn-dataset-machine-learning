@@ -1,10 +1,5 @@
-# ITEC3040 Iranian Churn Dataset
+# Iranian Churn Dataset - Machine Learning Results
 
-## Team: Data Miners
-- Amen Abrham
-- Ibraheem Ahmed
-- Nuha Naushad
-- Samirah Mohammad
 
 ## Project Overview
 
