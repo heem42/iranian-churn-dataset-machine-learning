@@ -26,9 +26,6 @@ pipenv run python src.py
 ## Output
 
 ```
-ITEC3040 IRANIAN CHURN DATASET
-Team: Data Miners
-Members: Amen Abrham, Ibraheem Ahmed, Nuha Naushad, Samirah Mohammad
 Data shape: (3150, 13)
 Logistic Regression: {'C': 10}
 K-Nearest Neighbors: {'n_neighbors': 9}
