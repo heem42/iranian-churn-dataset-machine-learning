@@ -1,7 +1,3 @@
-# ITEC3040 Iranian Churn Group Project
-# Team: Data Miners
-# Members: Amen Abrham, Ibraheem Ahmed, Nuha Naushad, Samirah Mohammad
-
 from ucimlrepo import fetch_ucirepo
 from sklearn.model_selection import train_test_split, cross_val_score, KFold, GridSearchCV
 from sklearn.preprocessing import StandardScaler
@@ -15,11 +11,6 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.tree import DecisionTreeClassifier
 import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
-
-
-print("ITEC3040 IRANIAN CHURN DATASET")
-print("Team: Data Miners")
-print("Members: Amen Abrham, Ibraheem Ahmed, Nuha Naushad, Samirah Mohammad")
 
 # id=563 is our iranian churn dataset
 dataset = fetch_ucirepo(id=563)
